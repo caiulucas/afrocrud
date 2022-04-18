@@ -10,7 +10,16 @@ export function App() {
         <h1>afro<span>crud</span></h1>
       </header>
 
-      <Shape />
+      <Shape>
+        <h2>Criar funcionário</h2>
+				
+        <form>
+          <label className="input">
+			      Nome:
+			      <input type="text" placeholder="Preencha o nome do funcionário" />
+			    </label>
+        </form>
+      </Shape>
     </>
   )
 }
