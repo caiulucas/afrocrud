@@ -15,9 +15,9 @@ export function App() {
 				
         <form>
           <label className="input">
-			      Nome:
-			      <input type="text" placeholder="Preencha o nome do funcionário" />
-			    </label>
+	    Nome:
+	    <input type="text" placeholder="Preencha o nome do funcionário" />
+	  </label>
         </form>
       </Shape>
     </>
