@@ -19,4 +19,11 @@
       color: var(--placeholder-color);
     }
   }
+
+  span {
+    font-size: 0.75rem; // 12px
+    color: var(--fail-color);
+
+    margin-top: 0.25rem; // 4px
+  }
 }
