@@ -11,6 +11,8 @@ import { Checkbox } from './components/Form/Checkbox';
 import { Select } from './components/Form/Select';
 import { Button } from './components/Form/Button';
 
+import { phoneNumberMask, cpfMask, currencyMask, nameMask } from './utils/masks';
+
 export function App() {
   const { register, handleSubmit, formState: { errors } } = useForm();
 
@@ -30,7 +32,8 @@ export function App() {
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="grid-form">
             <Input 
-              label="Nome" 
+              label="Nome"
+              mask={nameMask}
               placeholder="Preencha o nome do funcionário"
               error={errors.name}
               {...register('name', { required: 'O nome é obrigatório' })}
@@ -57,24 +60,26 @@ export function App() {
             </div>
 
             <Input 
-              label="CPF" 
+              label="CPF"
               placeholder="Preencha o CPF do funcionário"
-              maxLength={11}
+              maxLength={14}
+              mask={cpfMask}
               error={errors.cpf}
-              {...register('cpf', { 
+              {...register('cpf', {
                 required: 'O CPF é obrigatório', 
-                minLength: { value: 11, message: 'Preencha o CPF corretamente' }
+                minLength: { value: 14, message: 'Preencha o CPF corretamente' }
               })}
             />
             <Input 
               label="Telefone"
               placeholder="Preencha o telefone do funcionário"
-              maxLength={11}
+              maxLength={15}
+              mask={phoneNumberMask}
               error={errors.phoneNumber}
               {...register('phoneNumber', {
                 required: 'O número de telefone é obrigatório',
                 minLength: { 
-                  value: 10, 
+                  value: 15, 
                   message: 'Preencha o número de telefone corretamente'
                 }
               })}
@@ -83,6 +88,8 @@ export function App() {
               label="Salário" 
               placeholder="Preencha o salário do funcionário"
               error={errors.salary}
+              mask={currencyMask}
+              defaultValue="R$ 0,00"
               {...register('salary', { required: 'O salário é obrigatório'})}
             />
 

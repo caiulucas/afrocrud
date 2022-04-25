@@ -1,14 +1,16 @@
 import React from 'react';
 import './styles.scss';
 
-function InputBase({ label, placeholder, error, ...rest }, ref) {
+function InputBase({ label, placeholder, error, mask, ...rest }, ref) {
   return (
     <label className="input">
       {label}:
-      <input 
-        type="text"        
+      <input
+        className={!!error && 'error'}
+        type="text"
         placeholder={placeholder}
         ref={ref}
+        onKeyUp={mask}
         {...rest}
       />
 

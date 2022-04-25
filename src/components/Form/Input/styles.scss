@@ -18,6 +18,14 @@
     &::placeholder {
       color: var(--placeholder-color);
     }
+
+    &:focus {
+      outline: 2px solid var(--button-color);
+    }
+
+    &.error {
+      outline: 2px solid var(--fail-color);
+    }
   }
 
   span {
