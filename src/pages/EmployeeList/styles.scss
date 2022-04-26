@@ -1,0 +1,13 @@
+.shape-list {
+  .title-area {
+    padding-bottom: 1rem; // 20px
+    border-bottom: 1px solid var(--border-color);
+
+    display: flex;    
+    align-items: center;
+
+    button {
+      height: 2.5rem; // 40px
+    }
+  }
+}
