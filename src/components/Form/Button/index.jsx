@@ -8,8 +8,13 @@ const icons = {
   plus: <PlusIcon />
 }
 
-export function Button({ title, icon }) {
+export function Button({ title, icon, onClick }) {
   return (
-    <button className="button">{title}{icons[icon]}</button>
+    <button 
+      className="button"
+      onClick={onClick}
+    >
+      {title}{icons[icon]}
+    </button>
   );
 }

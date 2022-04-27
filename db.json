@@ -1,7 +1,7 @@
 {
   "employees": [
     {
-      "name": "Caio Lucas",
+      "name": "Caio Lucas Pereira da Silva",
       "gender": "male",
       "status": true,
       "cpf": "123.456.789-10",
@@ -9,6 +9,16 @@
       "salary": "R$ 100000,00",
       "department": "marketing",
       "id": 1
+    },
+    {
+      "name": "Lucas Caio",
+      "gender": "male",
+      "status": false,
+      "cpf": "109.876.543-21",
+      "phoneNumber": "(99) 33445-5667",
+      "salary": "R$ 5,00",
+      "department": "financeiro",
+      "id": 2
     }
   ]
 }
