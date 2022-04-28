@@ -1,4 +1,6 @@
 .shape-list {
+  margin-bottom: 2rem; // 32px
+
   .title-area {
     padding-bottom: 1rem; // 20px
     border-bottom: 1px solid var(--border-color);
@@ -26,6 +28,12 @@
     tbody {
       tr {
         border-bottom: 1px solid var(--border-color);
+        
+        cursor: pointer;
+
+        &:hover {
+          background-color: var(--background-color);
+        }
 
         td {
           padding: 0.5rem 0; // 8px 0

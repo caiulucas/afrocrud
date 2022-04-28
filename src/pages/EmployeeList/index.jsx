@@ -23,17 +23,17 @@ export function EmployeeList() {
     }
 
     fetchData();
-  })
+  }, []);
 
-  function handleNavigate() {
-    navigate('create');
+  function handleShowEmployee(employee) {
+    navigate('create', { state: employee });
   }
 
   return (
     <Shape className="shape-list">
       <div className="title-area">
         <h2>Funcionários</h2>
-        <Button onClick={handleNavigate} title="Criar novo" icon="plus" />
+        <Button onClick={() => navigate('create')} title="Criar novo" icon="plus" />
       </div>
 
       <table>
@@ -48,7 +48,7 @@ export function EmployeeList() {
         </thead>
         <tbody>
           {employees.map(employee => (
-            <tr>
+            <tr key={employee.id} onClick={() => handleShowEmployee(employee)}>
               <td>
                 <p>{employee.name}</p>
                 <span>{employee.cpf}</span>

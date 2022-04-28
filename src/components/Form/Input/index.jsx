@@ -6,7 +6,7 @@ function InputBase({ label, placeholder, error, mask, ...rest }, ref) {
     <label className="input">
       {label}:
       <input
-        className={!!error && 'error'}
+        className={!!error ? 'error' : undefined}
         type="text"
         placeholder={placeholder}
         ref={ref}

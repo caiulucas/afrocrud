@@ -1,4 +1,5 @@
 import { useForm } from 'react-hook-form';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 import './styles.scss';
 
@@ -13,7 +14,12 @@ import { Button } from '../../components/Form/Button';
 import { phoneNumberMask, cpfMask, currencyMask, nameMask } from '../../utils/masks';
 
 export function EmployeeCreate() {
-  const { register, handleSubmit, formState: { errors } } = useForm();
+  const navigate = useNavigate();
+  const { state: employee } = useLocation();
+
+  const { register, handleSubmit, formState: { errors } } = useForm({
+    defaultValues: employee
+  });
 
   async function onSubmit(data) {
     // GET - Listar dados
@@ -21,19 +27,24 @@ export function EmployeeCreate() {
     // PUT - Alterar um dado
     // DELETE - Deletar um dado
     // PATCH - Alterações mais específicas (mudar imagem de usuário por exemplo)
-    await fetch('http://localhost:3333/employees', {
-      method: 'POST',
+
+    const path = data.id ? `employees/${data.id}` : 'employees';
+
+    await fetch(`http://localhost:3333/${path}`, {
+      method: data.id ? 'PUT' : 'POST',
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(data),
     });
+
+    navigate('/');
   }
 
   return (
     <Shape className='shape-create'>
-      <h2>Criar funcionário</h2>
+      <h2>{!!employee ? 'Atualizar' : 'Criar'} funcionário</h2>
 
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="grid-form">
@@ -50,7 +61,6 @@ export function EmployeeCreate() {
               <RadioButton 
                 title="Masculino"
                 value="male"
-                defaultChecked
                 {...register('gender')}
               />
               <RadioButton
@@ -102,7 +112,7 @@ export function EmployeeCreate() {
           <Select {...register('department')}/>
         </div>
 
-        <Button title="Adicionar" icon="arrowRight"/>          
+        <Button title={!!employee ? 'Atualizar' : 'Adicionar'} icon="arrowRight"/>          
         
       </form>
     </Shape>

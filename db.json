@@ -11,14 +11,34 @@
       "id": 1
     },
     {
-      "name": "Lucas Caio",
+      "name": "Lucas Kaio",
       "gender": "male",
-      "status": false,
+      "status": true,
       "cpf": "109.876.543-21",
       "phoneNumber": "(99) 33445-5667",
-      "salary": "R$ 5,00",
-      "department": "financeiro",
+      "salary": "R$ 10,00",
+      "department": "Desenvolvimento",
       "id": 2
+    },
+    {
+      "name": "Luis Enersto",
+      "gender": "male",
+      "status": true,
+      "cpf": "765.890.321-45",
+      "phoneNumber": "(11) 92233-0066",
+      "salary": "R$ 3000,00",
+      "department": "Suporte",
+      "id": 3
+    },
+    {
+      "name": "Antonella Miranda",
+      "gender": "female",
+      "status": true,
+      "cpf": "589.380.512-39",
+      "phoneNumber": "(33) 97755-4431",
+      "salary": "R$ 10000,00",
+      "department": "Desenvolvimento",
+      "id": 4
     }
   ]
 }

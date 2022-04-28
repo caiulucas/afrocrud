@@ -6,8 +6,10 @@ function SelectBase({ ...rest }, ref) {
     <label className="select">
       Departamento:
       <select ref={ref} {...rest}>
-        <option value="financeiro">Financeiro</option>
-        <option value="marketing">Marketing</option>
+        <option value="Financeiro">Financeiro</option>
+        <option value="Marketing">Marketing</option>
+        <option value="Suporte">Suporte</option>
+        <option value="Desenvolvimento">Desenvolvimento</option>
       </select>
     </label>
   );
