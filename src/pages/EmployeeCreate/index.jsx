@@ -34,12 +34,12 @@ export function EmployeeCreate() {
     let updatedEmployees = localEmployees;
 
     if(data.id) {
-      updatedEmployees = localEmployees.map(employee => {
-        if(data.id === employee.id) {
+      updatedEmployees = localEmployees.map(localEmployee => {
+        if(data.id === localEmployee.id) {
           return data;
         }
 
-        return employee;
+        return localEmployee;
       });
     } else {
       data.id = uuidV4();
@@ -53,9 +53,13 @@ export function EmployeeCreate() {
   }
 
   async function handleRemove() {
-    await fetch(`http://localhost:3333/employees/${employee.id}`, {
-      method: 'DELETE'
-    })
+    const localEmployees = JSON.parse(localStorage.getItem('@afrocrud:employees')) || [];
+
+    const updatedEmployees = localEmployees.filter(localEmployee => 
+      localEmployee.id !== employee.id
+    );
+
+    localStorage.setItem('@afrocrud:employees', JSON.stringify(updatedEmployees));
 
     navigate('/');
   }
