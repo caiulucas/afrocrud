@@ -55,7 +55,7 @@ export function EmployeeCreate() {
   async function handleRemove() {
     const localEmployees = JSON.parse(localStorage.getItem('@afrocrud:employees')) || [];
 
-    const updatedEmployees = localEmployees.filter(localEmployee => localEmployee.id === employee.id);
+    const updatedEmployees = localEmployees.filter(localEmployee => localEmployee.id !== employee.id);
 
     localStorage.setItem('@afrocrud:employees', JSON.stringify(updatedEmployees));
     navigate('/');
