@@ -1,9 +1,17 @@
 .shape-create {
-  h2 { 
-    font-size: 1.5rem; // 24px
+  .title-area {
     border-bottom: 1px solid var(--border-color);
-
+    display: flex;
     padding-bottom: 1rem; // 16px
+
+    button {
+      height: 2.5rem; // 40px
+      background-color: var(--fail-color);
+    }
+
+    h2 { 
+      font-size: 1.5rem; // 24px
+    }
   }
 
   form {

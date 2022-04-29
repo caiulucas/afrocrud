@@ -8,6 +8,7 @@ export function Router(){
     <Routes>
       <Route path="/" element={<EmployeeList />} />
       <Route path="/create" element={<EmployeeCreate />}/>
+      <Route path="/update" element={<EmployeeCreate />}/>
     </Routes>
   );
 }

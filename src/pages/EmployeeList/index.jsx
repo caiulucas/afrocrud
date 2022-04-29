@@ -14,19 +14,13 @@ export function EmployeeList() {
   const [employees, setEmployees] = useState([]);
 
   useEffect(() => {
-    async function fetchData() {
-      const response = await fetch('http://localhost:3333/employees');
+    const localEmployees = JSON.parse(localStorage.getItem('@afrocrud:employees')) || [];  
 
-      const result = await response.json();
-
-      setEmployees(result);
-    }
-
-    fetchData();
+    setEmployees(localEmployees);
   }, []);
 
   function handleShowEmployee(employee) {
-    navigate('create', { state: employee });
+    navigate('update', { state: employee });
   }
 
   return (
