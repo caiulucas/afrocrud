@@ -1,5 +1,6 @@
 import { useForm } from 'react-hook-form';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { v4 as uuidV4 } from 'uuid';
 
 import './styles.scss';
 
@@ -28,23 +29,43 @@ export function EmployeeCreate() {
     // DELETE - Deletar um dado
     // PATCH - Alterações mais específicas (mudar imagem de usuário por exemplo)
 
-    const path = data.id ? `employees/${data.id}` : 'employees';
+    const localEmployees = JSON.parse(localStorage.getItem('@afrocrud:employees')) || [];
 
-    await fetch(`http://localhost:3333/${path}`, {
-      method: data.id ? 'PUT' : 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(data),
-    });
+    let updatedEmployees = localEmployees;
+
+    if(data.id) {
+      updatedEmployees = localEmployees.map(employee => {
+        if(data.id === employee.id) {
+          return data;
+        }
+
+        return employee;
+      });
+    } else {
+      data.id = uuidV4();
+      
+      updatedEmployees = [...localEmployees, data];
+    }
+  
+    localStorage.setItem('@afrocrud:employees', JSON.stringify(updatedEmployees));
+   
+    navigate('/');
+  }
+
+  async function handleRemove() {
+    await fetch(`http://localhost:3333/employees/${employee.id}`, {
+      method: 'DELETE'
+    })
 
     navigate('/');
   }
 
   return (
-    <Shape className='shape-create'>
-      <h2>{!!employee ? 'Atualizar' : 'Criar'} funcionário</h2>
+    <Shape className="shape-create">
+      <div className="title-area">
+        <h2>{!!employee ? 'Atualizar' : 'Criar'} funcionário</h2>
+        {!!employee && <Button title="Remover" onClick={handleRemove} />}
+      </div>
 
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="grid-form">
